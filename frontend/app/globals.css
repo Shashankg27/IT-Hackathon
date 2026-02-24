@@ -1,0 +1,274 @@
+@import "tailwindcss";
+
+:root {
+  --nav-bg: #1e293b;
+  --nav-text: #f8fafc;
+  --accent-gold: #c29b40;
+  --accent-gold-bright: #eab308;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --border-color: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--nav-bg);
+  border-radius: 4px;
+}
+
+/* Brochure Layout Primitives */
+.section-white {
+  background-color: var(--bg-primary);
+  padding: 100px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-navy {
+  background-color: var(--nav-bg);
+  color: white;
+  padding: 100px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-gray {
+  background-color: var(--bg-secondary);
+  padding: 100px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heading-lg {
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  margin-bottom: 32px;
+  position: relative;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.heading-lg::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 5px;
+  background-color: var(--accent-gold);
+}
+
+/* Geometric Patterns */
+.dots-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(194, 155, 64, 0.2) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.geometric-shape {
+  position: absolute;
+  border: 1px solid var(--accent-gold);
+  border-radius: 50%;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-text-large {
+  position: absolute;
+  font-size: clamp(15rem, 30vw, 25rem);
+  font-weight: 900;
+  color: var(--text-primary);
+  opacity: 0.03;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+/* Transitions & Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.card-3d {
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+.card-3d:hover {
+  transform: rotateY(7deg) rotateX(4deg) translateZ(30px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+}
+
+/* Fluid Scroll Reveal */
+.reveal,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  filter: blur(10px);
+  will-change: transform, opacity, filter;
+}
+
+.reveal {
+  transform: translateY(80px) scale(0.96);
+  transition: all 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-left {
+  transform: translateX(-100px);
+  transition: all 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-right {
+  transform: translateX(100px);
+  transition: all 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.active.reveal,
+.active.reveal-left,
+.active.reveal-right {
+  opacity: 1;
+  transform: translate(0) scale(1);
+  filter: blur(0);
+}
+
+/* Brochure Line Animation */
+.brochure-line {
+  height: 2px;
+  background: var(--accent-gold);
+  width: 0;
+  transition: width 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.active .brochure-line {
+  width: 120px;
+}
+
+/* Buttons */
+.btn-brochure-gold {
+  background-color: var(--accent-gold);
+  color: white;
+  padding: 14px 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-brochure-gold:hover {
+  background-color: var(--accent-gold-bright);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(194, 155, 64, 0.3);
+}
+
+.btn-brochure-outline {
+  background-color: transparent;
+  border: 2px solid var(--accent-gold);
+  color: var(--accent-gold);
+  padding: 12px 34px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-brochure-outline:hover {
+  background-color: var(--accent-gold);
+  color: white;
+}
+
+/* Brochure Card */
+.brochure-card {
+  background: white;
+  border: 1px solid var(--border-color);
+  padding: 40px;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+}
+
+.brochure-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 6px;
+  background: var(--accent-gold);
+  transition: width 0.5s ease;
+}
+
+.brochure-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-gold);
+}
+
+.brochure-card:hover::before {
+  width: 100%;
+}
+
+/* Grid helper */
+.brochure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 48px;
+}
