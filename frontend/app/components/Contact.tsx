@@ -12,14 +12,14 @@ export default function Contact() {
               </p>
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
-                 <div>
+                 {/* <div>
                     <h4 style={{ fontSize: '0.7rem', fontWeight: 800, color: '#c29b40', letterSpacing: '0.1em', marginBottom: 8 }}>EMAIL</h4>
                     <p style={{ fontSize: '1.1rem', fontWeight: 600, color: '#1e293b' }}>priyadarshi.prakhar@bharatividyapeeth.edu</p>
                  </div>
                  <div>
                     <h4 style={{ fontSize: '0.7rem', fontWeight: 800, color: '#c29b40', letterSpacing: '0.1em', marginBottom: 8 }}>PHONE</h4>
                     <p style={{ fontSize: '1.1rem', fontWeight: 600, color: '#1e293b' }}>+91 74283 96887</p>
-                 </div>
+                 </div> */}
                  <div>
                     <h4 style={{ fontSize: '0.7rem', fontWeight: 800, color: '#c29b40', letterSpacing: '0.1em', marginBottom: 8 }}>LOCATION</h4>
                     <p style={{ fontSize: '0.95rem', fontWeight: 600, color: '#1e293b' }}>

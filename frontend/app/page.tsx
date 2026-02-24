@@ -16,7 +16,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <About />
-      <Tracks />
+      {/* <Tracks /> */}
       <EventStructure />
       <Prizes />
       <PastEvents />

@@ -16,7 +16,7 @@ export default function About() {
             <div style={{ marginTop: 40 }}>
                <ScrollReveal delay={100}>
                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1e293b', marginBottom: 16 }}>
-                    Company Details & Information
+                    BVCOE, New Delhi
                  </h3>
                </ScrollReveal>
                <ScrollReveal delay={200}>
