@@ -8,6 +8,7 @@ const tiers = [
   { name: 'EVENT PARTNER', price: '15 K', color: '#1e293b', perks: ['Naming Rights', 'Logo on Posters', 'Market Research'] },
 ];
 
+
 export default function SponsorTiers() {
   return (
     <section id="sponsor-tiers" className="section-white">
