@@ -2,8 +2,8 @@
 import ScrollReveal from './ScrollReveal';
 
 const prizeSummary = [
-  { label: 'IDEATHON POOL', amount: '₹15,000' },
-  { label: 'HACKATHON POOL', amount: '₹1,00,000+' }
+  { label: 'IDEATHON POOL' },
+  { label: 'HACKATHON POOL' },
 ];
 
 export default function Prizes() {
@@ -18,15 +18,20 @@ export default function Prizes() {
              WIN BIG, BUILD <span style={{ color: '#c29b40' }}>BIGGER</span>
           </h2>
         </ScrollReveal>
-        
+
         <div style={{ display: 'flex', justifyContent: 'center', gap: 40, flexWrap: 'wrap' }} className="perspective-1000">
            {prizeSummary.map((p, idx) => (
               <ScrollReveal key={p.label} delay={idx * 150} animation="reveal">
                 <div className="card-3d" style={{ minWidth: 280, padding: '40px', border: '2px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.02)' }}>
-                   <p style={{ fontSize: '0.8rem', opacity: 0.6, letterSpacing: '0.1em', marginBottom: 16 }}>{p.label}</p>
-                   <p style={{ fontSize: '2.5rem', fontWeight: 800, color: '#c29b40' }}>{p.amount}</p>
+                   <p style={{ fontSize: '0.8rem', opacity: 0.6, letterSpacing: '0.1em', marginBottom: 20 }}>{p.label}</p>
+                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 6 }}>
+                      <span style={{ fontSize: '1.4rem' }}>🔒</span>
+                      <p style={{ fontSize: '1.4rem', fontWeight: 800, color: '#c29b40', letterSpacing: '0.04em' }}>
+                        Revealing Soon
+                      </p>
+                   </div>
                    <div className="brochure-line" style={{ margin: '24px auto', opacity: 0.5 }} />
-                   <p style={{ fontSize: '0.75rem', opacity: 0.5 }}>Cash + Kind Rewards</p>
+                   <p style={{ fontSize: '0.75rem', opacity: 0.5 }}>Stay tuned for the announcement</p>
                 </div>
               </ScrollReveal>
            ))}

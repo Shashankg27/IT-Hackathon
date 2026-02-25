@@ -2,10 +2,10 @@
 import ScrollReveal from './ScrollReveal';
 
 const tiers = [
-  { name: 'TITLE PARTNER', price: '1 L', color: '#c29b40', perks: ['Chief Guest Seat', 'Logo on Main Screen', 'Stall Space', 'Database Access'] },
-  { name: 'GOLD PARTNER', price: '50 K', color: '#1e293b', perks: ['Guest of Honor', 'Screen Branding', 'Stall Space', 'Database Access'] },
-  { name: 'SILVER PARTNER', price: '25 K', color: '#1e293b', perks: ['Guest of Honor', 'Screen Branding', 'Stall Space', 'Database Access'] },
-  { name: 'EVENT PARTNER', price: '15 K', color: '#1e293b', perks: ['Naming Rights', 'Logo on Posters', 'Market Research', 'Database Access'] },
+  { name: 'TITLE PARTNER', price: '1 L', color: '#c29b40', perks: ['Chief Guest', 'Logo on Main Screen', 'Stall Space'] },
+  { name: 'GOLD PARTNER', price: '50 K', color: '#1e293b', perks: ['Guest of Honor', 'Screen Branding', 'Stall Space'] },
+  { name: 'SILVER PARTNER', price: '25 K', color: '#1e293b', perks: ['Guest of Honor', 'Screen Branding', 'Stall Space'] },
+  { name: 'EVENT PARTNER', price: '15 K', color: '#1e293b', perks: ['Naming Rights', 'Logo on Posters', 'Market Research'] },
 ];
 
 export default function SponsorTiers() {

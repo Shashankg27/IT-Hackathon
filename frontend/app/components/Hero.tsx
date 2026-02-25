@@ -1,5 +1,85 @@
 'use client';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
+
+function useCountdown(targetDate: Date) {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hrs: 0, min: 0, sec: 0 });
+
+  useEffect(() => {
+    const calc = () => {
+      const diff = targetDate.getTime() - Date.now();
+      if (diff <= 0) {
+        setTimeLeft({ days: 0, hrs: 0, min: 0, sec: 0 });
+        return;
+      }
+      setTimeLeft({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hrs:  Math.floor((diff / (1000 * 60 * 60)) % 24),
+        min:  Math.floor((diff / (1000 * 60)) % 60),
+        sec:  Math.floor((diff / 1000) % 60),
+      });
+    };
+    calc();
+    const id = setInterval(calc, 1000);
+    return () => clearInterval(id);
+  }, [targetDate]);
+
+  return timeLeft;
+}
+
+function CountdownTimer({ targetDate, label, dayNum, month }: {
+  targetDate: Date;
+  label: string;
+  dayNum: string;
+  month: string;
+}) {
+  const t = useCountdown(targetDate);
+
+  return (
+    <div className="animate-float" style={{ flex: 1, textAlign: 'center' }}>
+      {/* Date display */}
+      <p style={{ fontSize: '2.5rem', fontWeight: 800, color: '#1e293b', lineHeight: 1 }}>{dayNum}</p>
+      <p style={{ fontSize: '0.8rem', fontWeight: 700, color: '#c29b40', marginTop: 2 }}>{month}</p>
+      <p style={{ fontSize: '0.65rem', fontWeight: 600, color: '#64748b', marginTop: 2, marginBottom: 12 }}>{label}</p>
+
+      {/* Countdown strip */}
+      <div
+        style={{
+          // backgroundColor: '#1e293b',
+          borderRadius: 6,
+          padding: '8px 6px',
+          display: 'inline-flex',
+          alignItems: 'flex-end',
+          gap: 3,
+        }}
+      >
+        {[
+          { v: t.days, l: 'D' },
+          { v: t.hrs,  l: 'H' },
+          { v: t.min,  l: 'M' },
+          { v: t.sec,  l: 'S' },
+        ].map((unit, i) => (
+          <div key={unit.l} style={{ display: 'flex', alignItems: 'flex-end', gap: 3 }}>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#c29b40', lineHeight: 1 }}>
+                {String(unit.v).padStart(2, '0')}
+              </div>
+              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'rgba(31, 105, 166, 0.59)', letterSpacing: '0.05em', marginTop: 2 }}>
+                {unit.l}
+              </div>
+            </div>
+            {i < 3 && (
+              <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#c29b40', paddingBottom: 20 }}>:</div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const IDEATHON_DATE  = new Date('2026-04-11T09:00:00+05:30');
+const HACKATHON_DATE = new Date('2026-04-18T09:00:00+05:30');
 
 export default function Hero() {
   return (
@@ -10,7 +90,6 @@ export default function Hero() {
         position: 'relative',
         overflow: 'hidden',
         backgroundColor: '#f8fafc',
-        // paddingTop: '90px', // match navbar height
       }}
     >
       {/* LEFT PANEL */}
@@ -48,9 +127,9 @@ export default function Hero() {
           </h1>
 
           <div style={{ marginBottom: 40, maxWidth: 400, lineHeight: 1.5 }}>
-            Innovation Ideathon & Hackathon on <br />
+            Innovation Ideathon &amp; Hackathon on <br />
             <span style={{ color: '#c29b40', fontWeight: 700 }}>
-              Digital Trust & Data Accountability
+              Digital Trust &amp; Data Accountability
             </span>
           </div>
 
@@ -96,7 +175,7 @@ export default function Hero() {
             maxWidth: 520,
           }}
         >
-          {/* ✅ BIG CENTERED LOGO */}
+          {/* BIG CENTERED LOGO */}
           <div
             style={{
               position: 'relative',
@@ -104,7 +183,6 @@ export default function Hero() {
               height: 'clamp(160px, 18vw, 260px)',
               margin: '0 auto 0px auto',
             }}
-            className=""
           >
             <Image
               src="/collegeLogo.png"
@@ -126,7 +204,7 @@ export default function Hero() {
               letterSpacing: '0.05em',
             }}
           >
-            Bharati Vidyapeeth&apos;s <br /> College of Engineering
+            Bharati Vidyapeeth&apos;s <br /> College of Engineering, <br /> New Delhi
           </h2>
 
           <p
@@ -138,40 +216,35 @@ export default function Hero() {
               lineHeight: 1.6,
             }}
           >
-            An ISO 9001:2015 Certified Institution approved by AICTE &
+            An ISO 9001:2015 Certified Institution approved by AICTE &amp;
             Affiliated to GGSIPU, Delhi.
           </p>
 
-          {/* DATES */}
+          {/* DATES + TIMERS */}
           <div
             style={{
-              marginTop: 60,
-              display: 'inline-flex',
-              gap: 20,
-              alignItems: 'center',
+              marginTop: 48,
+              display: 'flex',
+              gap: 24,
+              alignItems: 'flex-start',
+              justifyContent: 'center',
             }}
           >
-            <div className="animate-float" style={{ animationDelay: '0.5s' }}>
-              <p style={{ fontSize: '2.5rem', fontWeight: 800 }}>11</p>
-              <p style={{ fontSize: '0.8rem', fontWeight: 700, color: '#c29b40' }}>
-                APRIL
-              </p>
-              <p style={{ fontSize: '0.65rem', fontWeight: 600, color: '#64748b' }}>
-                IDEATHON
-              </p>
-            </div>
+            <CountdownTimer
+              targetDate={IDEATHON_DATE}
+              label="IDEATHON"
+              dayNum="11"
+              month="APRIL"
+            />
 
-            <div style={{ width: 1, height: 80, backgroundColor: '#e2e8f0' }} />
+            <div style={{ width: 1, height: 120, backgroundColor: '#e2e8f0', marginTop: 8 }} />
 
-            <div className="animate-float" style={{ animationDelay: '1s' }}>
-              <p style={{ fontSize: '2.5rem', fontWeight: 800 }}>18</p>
-              <p style={{ fontSize: '0.8rem', fontWeight: 700, color: '#c29b40' }}>
-                APRIL
-              </p>
-              <p style={{ fontSize: '0.65rem', fontWeight: 600, color: '#64748b' }}>
-                HACKATHON
-              </p>
-            </div>
+            <CountdownTimer
+              targetDate={HACKATHON_DATE}
+              label="HACKATHON"
+              dayNum="18"
+              month="APRIL"
+            />
           </div>
         </div>
       </div>

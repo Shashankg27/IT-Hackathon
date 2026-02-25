@@ -10,8 +10,8 @@ const phases = [
     color: '#c29b40',
     rounds: [
       { step: '01', name: 'Abstract Submission', desc: 'Teams submit innovative abstracts aligned with tracks.' },
-      { step: '02', name: 'Shortlisting', desc: '40–50 teams shortlisted from all submissions for presentation.' },
-      { step: '03', name: 'Top 3 Privilege', desc: 'Winners get ₹15k total prize + direct entry to Hackathon Rd 2.' },
+      { step: '02', name: 'Innovation Pitch', desc: 'Shortlisted teams will present the solution.' },
+      // { step: '03', name: 'Top 3 Privilege', desc: 'Winners get ₹15k total prize + direct entry to Hackathon Rd 2.' },
     ],
   },
   {
@@ -21,9 +21,9 @@ const phases = [
     mode: 'HYBRID',
     color: '#1e293b',
     rounds: [
-      { step: 'R1', name: 'Online Presentation', desc: 'Virtual technical solution walkthrough.' },
-      { step: 'R2', name: 'Online Development', desc: 'Feasibility, technical implementation, and theme alignment.' },
-      { step: 'R3', name: 'Final Round', desc: 'Prototype presentation at college (Offline – April 18).' },
+      { step: 'R1', name: 'Presentation Round', desc: 'Virtual technical solution walkthrough.' },
+      { step: 'R2', name: 'Mentoring Round', desc: 'Feasibility, technical implementation, and theme alignment.' },
+      { step: 'R3', name: 'Grand Finale', desc: 'Prototype presentation at college.' },
     ],
   },
 ];
@@ -57,7 +57,7 @@ export default function EventStructure() {
                       <div style={{ backgroundColor: 'white', padding: '24px', border: '1px solid #e2e8f0', height: '100%', transition: 'all 0.3s ease' }} className="hover:shadow-md">
                          <div style={{ fontSize: '0.7rem', fontWeight: 800, color: '#c29b40', marginBottom: 12 }}>{r.step}</div>
                          <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#1e293b', marginBottom: 8 }}>{r.name}</h4>
-                         <p style={{ fontSize: '0.8rem', color: '#64748b' }}>{r.desc}</p>
+                         <p style={{ fontSize: '0.8rem', color: '#64748b', textAlign: 'justify' }}>{r.desc}</p>
                       </div>
                     </ScrollReveal>
                  ))}

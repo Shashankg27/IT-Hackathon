@@ -22,7 +22,7 @@ export default function Footer() {
               <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
                  <li><a href="#about" style={{ color: 'white', textDecoration: 'none', fontSize: '0.8rem', opacity: 0.7 }}>About Us</a></li>
                  <li><a href="#event" style={{ color: 'white', textDecoration: 'none', fontSize: '0.8rem', opacity: 0.7 }}>Event Schedule</a></li>
-                 <li><a href="#tracks" style={{ color: 'white', textDecoration: 'none', fontSize: '0.8rem', opacity: 0.7 }}>Innovation Tracks</a></li>
+                 {/* <li><a href="#tracks" style={{ color: 'white', textDecoration: 'none', fontSize: '0.8rem', opacity: 0.7 }}>Innovation Tracks</a></li> */}
               </ul>
            </div>
            <div>

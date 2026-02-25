@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import AboutDepartment from "./components/AboutDepartment";
 import EventStructure from "./components/EventStructure";
 import Tracks from "./components/Tracks";
 import Prizes from "./components/Prizes";
@@ -16,6 +17,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <About />
+      <AboutDepartment />
       {/* <Tracks /> */}
       <EventStructure />
       <Prizes />

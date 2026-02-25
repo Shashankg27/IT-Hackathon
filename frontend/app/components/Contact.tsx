@@ -4,40 +4,82 @@ export default function Contact() {
   return (
     <section id="contact" className="section-gray">
       <div className="container">
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 80 }}>
-           <div style={{ flex: '1 1 400px' }}>
-              <h2 className="heading-lg">CONTACT US</h2>
-              <p style={{ color: '#475569', fontSize: '1.1rem', marginTop: 20, marginBottom: 40 }}>
-                 Reach out to us for sponsorship opportunities, participation details, or any further information.
-              </p>
-              
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
-                 {/* <div>
-                    <h4 style={{ fontSize: '0.7rem', fontWeight: 800, color: '#c29b40', letterSpacing: '0.1em', marginBottom: 8 }}>EMAIL</h4>
-                    <p style={{ fontSize: '1.1rem', fontWeight: 600, color: '#1e293b' }}>priyadarshi.prakhar@bharatividyapeeth.edu</p>
-                 </div>
-                 <div>
-                    <h4 style={{ fontSize: '0.7rem', fontWeight: 800, color: '#c29b40', letterSpacing: '0.1em', marginBottom: 8 }}>PHONE</h4>
-                    <p style={{ fontSize: '1.1rem', fontWeight: 600, color: '#1e293b' }}>+91 74283 96887</p>
-                 </div> */}
-                 <div>
-                    <h4 style={{ fontSize: '0.7rem', fontWeight: 800, color: '#c29b40', letterSpacing: '0.1em', marginBottom: 8 }}>LOCATION</h4>
-                    <p style={{ fontSize: '0.95rem', fontWeight: 600, color: '#1e293b' }}>
-                       A-4, Paschim Vihar, Main Rohtak Road, New Delhi – 110 063
-                    </p>
-                 </div>
-              </div>
-           </div>
 
-           <div style={{ flex: '1 1 300px', backgroundColor: 'white', padding: '48px', border: '1px solid #e2e8f0' }}>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#1e293b', marginBottom: 20 }}>READY TO START?</h3>
-              <p style={{ color: '#64748b', fontSize: '0.9rem', marginBottom: 32 }}>
-                 Submit your proposal abstract and compete for a total prize pool of ₹1,15,000+.
-              </p>
-              <a href="mailto:priyadarshi.prakhar@bharatividyapeeth.edu" className="btn-brochure-gold" style={{ width: '100%', textAlign: 'center' }}>
-                 SUBMIT ABSTRACT
-              </a>
-           </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 60, alignItems: 'flex-start' }}>
+
+          {/* Left — heading + contact info */}
+          <div style={{ flex: '1 1 320px' }}>
+            <h2 className="heading-lg">CONTACT US</h2>
+            <p style={{ color: '#475569', fontSize: '1.1rem', marginTop: 20, marginBottom: 40, textAlign: 'justify' }}>
+              Reach out to us for sponsorship opportunities, participation details, or any further information.
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+              <div>
+                <h4 style={{ fontSize: '0.7rem', fontWeight: 800, color: '#c29b40', letterSpacing: '0.1em', marginBottom: 8 }}>
+                  LOCATION
+                </h4>
+                <p style={{ fontSize: '0.95rem', fontWeight: 600, color: '#1e293b', lineHeight: 1.6 }}>
+                  A-4, Paschim Vihar, Main Rohtak Road,<br />New Delhi – 110 063
+                </p>
+              </div>
+
+              {/* <div>
+                <h4 style={{ fontSize: '0.7rem', fontWeight: 800, color: '#c29b40', letterSpacing: '0.1em', marginBottom: 8 }}>
+                  CONTACT
+                </h4>
+                <a
+                  href="mailto:priyadarshi.prakhar@bharatividyapeeth.edu"
+                  className="btn-brochure-gold"
+                  style={{ display: 'inline-block' }}
+                >
+                  SUBMIT ABSTRACT
+                </a>
+              </div> */}
+            </div>
+          </div>
+
+          {/* Right — map */}
+          <div
+            style={{
+              flex: '2 1 200px',
+              borderRadius: 4,
+              overflow: 'hidden',
+              border: '2px solid #c29b40',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+            }}
+          >
+            {/* Label bar */}
+            <div
+              style={{
+                backgroundColor: '#1e293b',
+                padding: '12px 20px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 10,
+              }}
+            >
+              <span style={{ fontSize: '1rem' }}>📍</span>
+              <div>
+                <p style={{ color: '#c29b40', fontSize: '0.65rem', fontWeight: 800, letterSpacing: '0.1em' }}>VENUE</p>
+                <p style={{ color: 'white', fontSize: '0.82rem', fontWeight: 600 }}>
+                  Bharati Vidyapeeth's College of Engineering, Paschim Vihar, New Delhi
+                </p>
+              </div>
+            </div>
+
+            <iframe
+              title="BVCOE Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3499.204!2d77.1106320!3d28.6758656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d038e0dee2897%3A0x84bb3fed8b1c51f9!2sBharati%20Vidyapeeth's%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1708845600000!5m2!1sen!2sin"
+              width="100%"
+              height="300"
+              style={{ border: 0, display: 'block' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+
         </div>
       </div>
     </section>
