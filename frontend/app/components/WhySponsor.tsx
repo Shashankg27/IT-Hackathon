@@ -45,7 +45,7 @@ export default function WhySponsor() {
                  <p style={{ fontSize: '0.9rem', color: '#94a3b8', lineHeight: 1.8 }}>
                     Create lasting partnerships with the IT Department of BVCOE. Leverage early access to fresh prototypes and compliance-oriented solutions that align with your strategic interests.
                  </p>
-                 <div style={{ marginTop: 40, borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: 40, display: 'flex', gap: 40 }}>
+                 {/* <div style={{ marginTop: 40, borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: 40, display: 'flex', gap: 40 }}>
                     <div>
                       <p style={{ fontSize: '1.5rem', fontWeight: 800, color: '#5BE2B3' }}>50+</p>
                       <p style={{ fontSize: '0.7rem', color: '#94a3b8' }}>TEAMS</p>
@@ -54,7 +54,7 @@ export default function WhySponsor() {
                       <p style={{ fontSize: '1.5rem', fontWeight: 800, color: '#5BE2B3' }}>1.1L</p>
                       <p style={{ fontSize: '0.7rem', color: '#94a3b8' }}>PRIZE POOL</p>
                     </div>
-                 </div>
+                 </div> */}
               </div>
              </div>
            </ScrollReveal>
