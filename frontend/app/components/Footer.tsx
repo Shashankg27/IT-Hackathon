@@ -36,9 +36,6 @@ export default function Footer() {
       </div>
       
       <div className="container" style={{ marginTop: 60, borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: 40, textAlign: 'center' }}>
-         <p style={{ fontSize: '0.75rem', opacity: 0.4 }}>
-            © 2026 Bharati Vidyapeeth’s College of Engineering. All rights reserved.
-         </p>
       </div>
     </footer>
   );

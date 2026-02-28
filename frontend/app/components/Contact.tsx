@@ -10,18 +10,26 @@ export default function Contact() {
           {/* Left — heading + contact info */}
           <div style={{ flex: '1 1 320px' }}>
             <h2 className="heading-lg">CONTACT US</h2>
-            <p style={{ color: '#475569', fontSize: '1.1rem', marginTop: 20, marginBottom: 40, textAlign: 'justify' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginTop: 20, marginBottom: 40, textAlign: 'justify' }}>
               Reach out to us for sponsorship opportunities, participation details, or any further information.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
               <div>
-                <h4 style={{ fontSize: '0.7rem', fontWeight: 800, color: '#c29b40', letterSpacing: '0.1em', marginBottom: 8 }}>
+                <h4 style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--accent-gold)', letterSpacing: '0.1em', marginBottom: 8 }}>
                   LOCATION
                 </h4>
-                <p style={{ fontSize: '0.95rem', fontWeight: 600, color: '#1e293b', lineHeight: 1.6 }}>
+                <p style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.6 }}>
                   A-4, Paschim Vihar, Main Rohtak Road,<br />New Delhi – 110 063
                 </p>
+              </div>
+              <div>
+                <h4 style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--accent-gold)', letterSpacing: '0.1em', marginBottom: 8 }}>
+                  Mail
+                </h4>
+                <a href="mailto:hackit@bvcoend.ac.in" style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.6 }}>
+                  hackit@bvcoend.ac.in
+                </a>
               </div>
 
               {/* <div>
@@ -45,14 +53,14 @@ export default function Contact() {
               flex: '2 1 200px',
               borderRadius: 4,
               overflow: 'hidden',
-              border: '2px solid #c29b40',
+              border: '2px solid var(--accent-gold)',
               boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
             }}
           >
             {/* Label bar */}
             <div
               style={{
-                backgroundColor: '#1e293b',
+                backgroundColor: 'var(--nav-bg)',
                 padding: '12px 20px',
                 display: 'flex',
                 alignItems: 'center',
@@ -61,8 +69,8 @@ export default function Contact() {
             >
               <span style={{ fontSize: '1rem' }}>📍</span>
               <div>
-                <p style={{ color: '#c29b40', fontSize: '0.65rem', fontWeight: 800, letterSpacing: '0.1em' }}>VENUE</p>
-                <p style={{ color: 'white', fontSize: '0.82rem', fontWeight: 600 }}>
+                <p style={{ color: 'var(--accent-gold)', fontSize: '0.65rem', fontWeight: 800, letterSpacing: '0.1em' }}>VENUE</p>
+                <p style={{ color: 'var(--text-primary)', fontSize: '0.82rem', fontWeight: 600 }}>
                   Bharati Vidyapeeth's College of Engineering, Paschim Vihar, New Delhi
                 </p>
               </div>

@@ -13,7 +13,12 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <main>
+    <main style={{ backgroundColor: '#0F1A18', minHeight: '100vh', color: '#f8fafc', position: 'relative' }}>
+      {/* Global Background Elements */}
+      <div className="premium-bg" />
+      <div className="bg-glow-static" style={{ top: '10%', right: '-10%' }} />
+      <div className="bg-glow-static" style={{ top: '40%', left: '-15%', background: 'radial-gradient(circle, rgba(91, 226, 179, 0.03) 0%, transparent 70%)' }} />
+      <div className="bg-glow-static" style={{ bottom: '10%', right: '-10%' }} />
       <Navbar />
       <Hero />
       <About />
@@ -22,9 +27,9 @@ export default function Home() {
       <EventStructure />
       <Prizes />
       <PastEvents />
-      <div style={{ backgroundColor: '#f1f5f9', padding: '20px 0' }}>
+      <div style={{ backgroundColor: '#121F1C', padding: '20px 0' }}>
          <div className="container">
-            <div style={{ height: 1, backgroundColor: '#e2e8f0', width: '100%' }} />
+            <div style={{ height: 1, backgroundColor: '#2C3E3A', width: '100%' }} />
          </div>
       </div>
       <WhySponsor />
