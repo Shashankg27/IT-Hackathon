@@ -8,7 +8,7 @@ export default function Footer() {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
              <Image src="/collegeLogo.png" alt="BVCOE" width={40} height={40} style={{ filter: 'brightness(0) invert(1)' }} />
-             <p style={{ fontSize: '1.2rem', fontWeight: 800, color: '#c29b40' }}>Hack.IT@BVP 3.0</p>
+             <p style={{ fontSize: '1.2rem', fontWeight: 800, color: '#5BE2B3' }}>Hack.IT@BVP 3.0</p>
           </div>
           <p style={{ fontSize: '0.8rem', opacity: 0.6, maxWidth: 300 }}>
              Organized by the IT Department, Bharati Vidyapeeth’s College of Engineering, New Delhi. 
@@ -18,7 +18,7 @@ export default function Footer() {
 
         <div style={{ display: 'flex', gap: 60, flexWrap: 'wrap' }}>
            <div>
-              <h4 style={{ fontSize: '0.75rem', fontWeight: 800, color: '#c29b40', letterSpacing: '0.1em', marginBottom: 20 }}>LINKS</h4>
+              <h4 style={{ fontSize: '0.75rem', fontWeight: 800, color: '#5BE2B3', letterSpacing: '0.1em', marginBottom: 20 }}>LINKS</h4>
               <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
                  <li><a href="#about" style={{ color: 'white', textDecoration: 'none', fontSize: '0.8rem', opacity: 0.7 }}>About Us</a></li>
                  <li><a href="#event" style={{ color: 'white', textDecoration: 'none', fontSize: '0.8rem', opacity: 0.7 }}>Event Schedule</a></li>
@@ -26,7 +26,7 @@ export default function Footer() {
               </ul>
            </div>
            <div>
-              <h4 style={{ fontSize: '0.75rem', fontWeight: 800, color: '#c29b40', letterSpacing: '0.1em', marginBottom: 20 }}>LEGAL</h4>
+              <h4 style={{ fontSize: '0.75rem', fontWeight: 800, color: '#5BE2B3', letterSpacing: '0.1em', marginBottom: 20 }}>LEGAL</h4>
               <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
                  <li><p style={{ color: 'white', fontSize: '0.8rem', opacity: 0.7 }}>DPDP Act 2023</p></li>
                  <li><p style={{ color: 'white', fontSize: '0.8rem', opacity: 0.7 }}>Privacy Policy</p></li>

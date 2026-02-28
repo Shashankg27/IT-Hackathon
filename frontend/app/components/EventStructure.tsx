@@ -8,8 +8,8 @@ const timelineData = [
     title: 'IDEATHON',
     y: 80,
     rounds: [
-      { num: 'ROUND 1', title: 'Abstract Submission', desc: 'Teams submit innovative abstracts aligned with tracks.', y: 180, icon: '💡', roadPeak: 'left' },
-      { num: 'ROUND 2', title: 'Innovation Pitch', date: '11 APRIL 2026', subtitle: 'OFFLINE', desc: 'Shortlisted teams present the solution.', y: 500, icon: '⚙️', roadPeak: 'right' }
+      { num: 'ROUND 1', title: 'Abstract Submission', desc: 'Teams submit innovative abstracts aligned with tracks.', y: 180, icon: '💡', roadPeak: 'left', showPin: false },
+      { num: 'ROUND 2', title: 'Innovation Pitch', date: '11 APRIL 2026', subtitle: 'OFFLINE', desc: 'Shortlisted teams present the solution.', y: 500, icon: '⚙️', roadPeak: 'right', showPin: true, venue: 'BVCOE Campus' }
     ]
   },
   {
@@ -17,12 +17,31 @@ const timelineData = [
     title: 'HACKATHON',
     y: 650,
     rounds: [
-      { num: 'ROUND 1', title: 'Presentation Round', desc: 'Virtual technical solution walkthrough.', y: 800, icon: '📝', roadPeak: 'left' },
-      { num: 'ROUND 2', title: 'Mentoring Round', desc: 'Shortlisted teams build and refine working prototypes.', y: 1160, icon: '🚀', roadPeak: 'right' },
-      { num: 'GRAND FINALE', title: 'OFFLINE', date: '18 APRIL 2026', subtitle: 'Presentation Round', desc: 'Finalist teams present prototypes before an expert jury panel.', y: 1500, icon: '🔬', roadPeak: 'left' }
+      { num: 'ROUND 1', title: 'Presentation Round', desc: 'Virtual technical solution walkthrough.', y: 800, icon: '📝', roadPeak: 'left', showPin: false },
+      { num: 'ROUND 2', title: 'Mentoring Round', desc: 'Shortlisted teams build and refine working prototypes.', y: 1160, icon: '🚀', roadPeak: 'right', showPin: false },
+      { num: 'GRAND FINALE', title: 'OFFLINE', date: '18 APRIL 2026', subtitle: 'Presentation Round', desc: 'Finalist teams present prototypes before an expert jury panel.', y: 1500, icon: '🔬', roadPeak: 'left', showPin: true, venue: 'BVCOE Campus' }
     ]
   }
 ];
+
+// Location Pin Component
+const LocationPin = ({ size = 32 }: { size?: number }) => (
+  <svg 
+    width={size} 
+    height={size * 1.25} 
+    viewBox="0 0 24 30" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg"
+    style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.4))' }}
+  >
+    <path 
+      d="M12 0C5.373 0 0 5.373 0 12c0 9 12 18 12 18s12-9 12-18c0-6.627-5.373-12-12-12z" 
+      fill="#5BE2B3"
+    />
+    <circle cx="12" cy="12" r="5" fill="#0F1A18" />
+    <ellipse cx="9" cy="9" rx="2" ry="1.5" fill="rgba(255,255,255,0.4)" />
+  </svg>
+);
 
 export default function EventStructure() {
   const [isMobile, setIsMobile] = useState(false);
@@ -113,6 +132,49 @@ export default function EventStructure() {
               />
             </svg>
 
+            {/* PINS ON ROAD - Desktop */}
+            {allRounds.map((round, idx) => {
+              if (!round.showPin) return null;
+              const isRight = round.roadPeak === 'right';
+              // Position pin on the road (center is 400, offset based on peak)
+              const pinX = isRight ? '65%' : '35%';
+              
+              return (
+                <div
+                  key={`pin-${idx}`}
+                  style={{
+                    position: 'absolute',
+                    left: pinX,
+                    top: round.y,
+                    transform: 'translate(-50%, -50%)',
+                    zIndex: 15,
+                    animation: 'bounce 2s infinite'
+                  }}
+                >
+                  <LocationPin size={36} />
+                  {/* Venue label */}
+                  <div style={{
+                    position: 'absolute',
+                    top: '100%',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    marginTop: '4px',
+                    background: 'rgba(15,26,24,0.9)',
+                    border: '1px solid rgba(91,226,179,0.5)',
+                    borderRadius: '12px',
+                    padding: '3px 10px',
+                    fontSize: '0.6rem',
+                    color: '#5BE2B3',
+                    fontWeight: 700,
+                    whiteSpace: 'nowrap',
+                    backdropFilter: 'blur(4px)'
+                  }}>
+                    📍 {round.venue}
+                  </div>
+                </div>
+              );
+            })}
+
             {/* PHASE LABELS */}
             {timelineData.map((phase, idx) => (
               <div
@@ -143,7 +205,7 @@ export default function EventStructure() {
               return (
                 <div key={idx} style={{ position: 'absolute', top: round.y, left: 0, right: 0, height: '120px' }}>
 
-                  {/* ICON */}
+                  {/* ICON - Kept in original position */}
                   <div style={{
                     position: 'absolute',
                     left: iconX,
@@ -225,6 +287,26 @@ export default function EventStructure() {
           zIndex: 1
         }}></div>
 
+        {/* PINS ON ROAD - Mobile */}
+        {allRounds.map((round, idx) => {
+          if (!round.showPin) return null;
+          return (
+            <div
+              key={`mobile-pin-${idx}`}
+              style={{
+                position: 'absolute',
+                left: '40px',
+                top: round.y + 100, // Offset to align with timeline
+                transform: 'translate(-50%, -50%)',
+                zIndex: 15,
+                animation: 'bounce 2s infinite'
+              }}
+            >
+              <LocationPin size={28} />
+            </div>
+          );
+        })}
+
         {/* Mobile Timeline Items */}
         <div style={{ position: 'relative', zIndex: 2 }}>
           {timelineData.map((phase, phaseIdx) => (
@@ -255,7 +337,7 @@ export default function EventStructure() {
                     paddingLeft: '20px'
                   }}>
                     
-                    {/* Icon Node */}
+                    {/* Icon Node - Kept in place */}
                     <div style={{
                       width: '40px',
                       height: '40px',
@@ -310,6 +392,28 @@ export default function EventStructure() {
                           {round.subtitle}
                         </p>
                       )}
+                      
+                      {/* Venue info for offline events */}
+                      {round.showPin && (
+                        <div style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '4px',
+                          background: 'rgba(91,226,179,0.15)',
+                          border: '1px solid rgba(91,226,179,0.4)',
+                          borderRadius: '12px',
+                          padding: '3px 10px',
+                          fontSize: '0.7rem',
+                          color: '#5BE2B3',
+                          fontWeight: 700,
+                          marginTop: '8px',
+                          marginBottom: '4px'
+                        }}>
+                          <span>📍</span>
+                          <span>{round.venue}</span>
+                        </div>
+                      )}
+                      
                       <p style={{ fontSize: '0.85rem', color: '#94a3b8', lineHeight: 1.5, marginTop: '8px' }}>
                         {round.desc}
                       </p>
@@ -324,6 +428,14 @@ export default function EventStructure() {
       </div>
 
       <style jsx>{`
+        @keyframes bounce {
+          0%, 100% {
+            transform: translate(-50%, -50%) translateY(0);
+          }
+          50% {
+            transform: translate(-50%, -50%) translateY(-5px);
+          }
+        }
         @media (max-width: 1024px) {
           .desktop-timeline {
             display: none !important;
