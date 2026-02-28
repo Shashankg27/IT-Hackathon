@@ -3,82 +3,127 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 function useCountdown(targetDate: Date) {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hrs: 0, min: 0, sec: 0 });
+  const [days, setDays] = useState(0);
 
   useEffect(() => {
     const calc = () => {
       const diff = targetDate.getTime() - Date.now();
       if (diff <= 0) {
-        setTimeLeft({ days: 0, hrs: 0, min: 0, sec: 0 });
+        setDays(0);
         return;
       }
-      setTimeLeft({
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hrs:  Math.floor((diff / (1000 * 60 * 60)) % 24),
-        min:  Math.floor((diff / (1000 * 60)) % 60),
-        sec:  Math.floor((diff / 1000) % 60),
-      });
+      setDays(Math.floor(diff / (1000 * 60 * 60 * 24)));
     };
+
     calc();
-    const id = setInterval(calc, 1000);
+    const id = setInterval(calc, 1000 * 60);
     return () => clearInterval(id);
   }, [targetDate]);
 
-  return timeLeft;
+  return days;
 }
 
-function CountdownTimer({ targetDate, label, dayNum, month }: {
+function CountdownTimer({
+  targetDate,
+  label,
+  dayNum,
+  month,
+}: {
   targetDate: Date;
   label: string;
   dayNum: string;
   month: string;
 }) {
-  const t = useCountdown(targetDate);
+  const days = useCountdown(targetDate);
 
   return (
     <div className="animate-float countdown-timer" style={{ textAlign: 'center' }}>
-      {/* Date display */}
-      <p style={{ fontSize: '2.5rem', fontWeight: 800, color: '#f8fafc', lineHeight: 1 }}>{dayNum}</p>
-      <p style={{ fontSize: '0.8rem', fontWeight: 700, color: '#5BE2B3', marginTop: 2 }}>{month}</p>
-      <p style={{ fontSize: '0.65rem', fontWeight: 600, color: '#94a3b8', marginTop: 2, marginBottom: 12 }}>{label}</p>
-
-      {/* Countdown strip */}
+      
+      {/* DATE + DAYS ROW */}
       <div
         style={{
-          // backgroundColor: '#1e293b',
-          borderRadius: 6,
-          padding: '8px 6px',
-          display: 'inline-flex',
-          alignItems: 'flex-end',
-          gap: 3,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 14,
         }}
       >
-        {[
-          { v: t.days, l: 'D' },
-          { v: t.hrs,  l: 'H' },
-          { v: t.min,  l: 'M' },
-          { v: t.sec,  l: 'S' },
-        ].map((unit, i) => (
-          <div key={unit.l} style={{ display: 'flex', alignItems: 'flex-end', gap: 3 }}>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#5BE2B3', lineHeight: 1 }}>
-                {String(unit.v).padStart(2, '0')}
-              </div>
-              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'rgba(91, 226, 179, 0.59)', letterSpacing: '0.05em', marginTop: 2 }}>
-                {unit.l}
-              </div>
-            </div>
-            {i < 3 && (
-              <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#5BE2B3', paddingBottom: 20 }}>:</div>
-            )}
+        {/* DATE */}
+        <div>
+          <div
+            style={{
+              fontSize: '2.5rem',
+              fontWeight: 800,
+              color: '#f8fafc',
+              lineHeight: 1,
+            }}
+          >
+            {dayNum}
           </div>
-        ))}
+          <div
+            style={{
+              fontSize: '0.8rem',
+              fontWeight: 700,
+              color: '#5BE2B3',
+              marginTop: 2,
+            }}
+          >
+            {month}
+          </div>
+        </div>
+
+        {/* DIVIDER */}
+        <div
+          style={{
+            width: 1,
+            height: 46,
+            backgroundColor: '#2C3E3A',
+          }}
+        />
+
+        {/* DAYS */}
+        <div>
+          <div
+            style={{
+              fontSize: '2.2rem',
+              fontWeight: 800,
+              color: '#5BE2B3',
+              lineHeight: 1,
+            }}
+          >
+            {String(days).padStart(2, '0')}
+          </div>
+          <div
+            style={{
+              fontSize: '0.75rem',
+              fontWeight: 700,
+              color: 'rgba(91, 226, 179, 0.6)',
+              letterSpacing: '0.08em',
+              marginTop: 4,
+            }}
+          >
+            DAYS
+          </div>
+        </div>
       </div>
+
+      {/* LABEL */}
+      <p
+        style={{
+          fontSize: '0.65rem',
+          fontWeight: 600,
+          color: '#94a3b8',
+          marginTop: 10,
+          letterSpacing: '0.12em',
+        }}
+      >
+        {label}
+      </p>
     </div>
   );
 }
 
-const IDEATHON_DATE  = new Date('2026-04-11T09:00:00+05:30');
+const IDEATHON_DATE = new Date('2026-04-11T09:00:00+05:30');
 const HACKATHON_DATE = new Date('2026-04-18T09:00:00+05:30');
 
 export default function Hero() {
@@ -107,14 +152,7 @@ export default function Hero() {
         }}
       >
         <div className="animate-slideUp" style={{ animationDelay: '0.2s' }}>
-          <div
-            style={{
-              width: 40,
-              height: 4,
-              backgroundColor: '#5BE2B3',
-              marginBottom: 24,
-            }}
-          />
+          <div style={{ width: 40, height: 4, backgroundColor: '#5BE2B3', marginBottom: 24 }} />
 
           <h1
             style={{
@@ -137,19 +175,38 @@ export default function Hero() {
 
           <div style={{ marginBottom: 48 }}>
             <p style={{ fontSize: '0.8rem', opacity: 0.6 }}>POWERED BY</p>
-            <p style={{ fontSize: '1.2rem', fontWeight: 700 }}>
-              DPDP Act 2023
-            </p>
+            <p style={{ fontSize: '1.2rem', fontWeight: 700 }}>DPDP Act 2023</p>
           </div>
 
           <div className="hero-cta" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-            <a href="#contact" style={{ background: '#5BE2B3', color: '#0F1A18', padding: '12px 28px', fontSize: '0.8rem', fontWeight: 800, borderRadius: '4px', letterSpacing: '0.1em' }} className="hover:bg-[#34d399] transition-colors">
+            <a
+              href="#contact"
+              style={{
+                background: '#5BE2B3',
+                color: '#0F1A18',
+                padding: '12px 28px',
+                fontSize: '0.8rem',
+                fontWeight: 800,
+                borderRadius: '4px',
+                letterSpacing: '0.1em',
+              }}
+              className="hover:bg-[#34d399] transition-colors"
+            >
               REGISTER NOW
             </a>
+
             <a
               href="#event"
               className="btn-brochure-outline"
-              style={{ borderColor: 'white', color: 'white', padding: '12px 28px', fontSize: '0.8rem', fontWeight: 800, borderRadius: '4px', letterSpacing: '0.1em' }}
+              style={{
+                borderColor: 'white',
+                color: 'white',
+                padding: '12px 28px',
+                fontSize: '0.8rem',
+                fontWeight: 800,
+                borderRadius: '4px',
+                letterSpacing: '0.1em',
+              }}
             >
               VIEW SCHEDULE
             </a>
@@ -178,25 +235,17 @@ export default function Hero() {
             maxWidth: 520,
           }}
         >
-          {/* BIG CENTERED LOGO */}
           <div
             style={{
               position: 'relative',
               width: 'clamp(160px, 18vw, 260px)',
               height: 'clamp(160px, 18vw, 260px)',
-              margin: '0 auto 0px auto',
+              margin: '0 auto',
             }}
           >
-            <Image
-              src="/collegeLogo.png"
-              alt="BVCOE"
-              fill
-              priority
-              style={{ objectFit: 'contain' }}
-            />
+            <Image src="/collegeLogo-bg.png" alt="BVCOE" fill priority style={{ objectFit: 'contain' }} />
           </div>
 
-          {/* COLLEGE NAME */}
           <h2
             style={{
               fontSize: '1.4rem',
@@ -223,9 +272,8 @@ export default function Hero() {
             Affiliated to GGSIPU, Delhi.
           </p>
 
-          {/* DATES + TIMERS */}
+          {/* COUNTDOWNS */}
           <div
-            className="hero-countdowns"
             style={{
               marginTop: 48,
               display: 'flex',
@@ -234,24 +282,11 @@ export default function Hero() {
               justifyContent: 'center',
             }}
           >
-            <CountdownTimer
-              targetDate={IDEATHON_DATE}
-              label="IDEATHON"
-              dayNum="11"
-              month="APRIL"
-            />
+            <CountdownTimer targetDate={IDEATHON_DATE} label="IDEATHON" dayNum="11" month="APRIL" />
 
-            <div
-              className="hero-countdowns-divider"
-              style={{ width: 1, height: 120, backgroundColor: '#2C3E3A', marginTop: 8 }}
-            />
+            <div style={{ width: 1, height: 120, backgroundColor: '#2C3E3A', marginTop: 8 }} />
 
-            <CountdownTimer
-              targetDate={HACKATHON_DATE}
-              label="HACKATHON"
-              dayNum="18"
-              month="APRIL"
-            />
+            <CountdownTimer targetDate={HACKATHON_DATE} label="HACKATHON" dayNum="18" month="APRIL" />
           </div>
         </div>
       </div>

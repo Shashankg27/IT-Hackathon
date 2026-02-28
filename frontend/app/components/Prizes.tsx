@@ -11,11 +11,11 @@ export default function Prizes() {
     <section id="prizes" className="section-navy">
       <div className="container" style={{ textAlign: 'center' }}>
         <ScrollReveal>
-          <p style={{ fontSize: '0.8rem', fontWeight: 700, color: '#c29b40', letterSpacing: '0.2em', marginBottom: 12 }}>
+          <p style={{ fontSize: '0.8rem', fontWeight: 700, color: '#5BE2B3', letterSpacing: '0.2em', marginBottom: 12 }}>
              PRIZE POOL
           </p>
           <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 800, marginBottom: 60 }}>
-             WIN BIG, BUILD <span style={{ color: '#c29b40' }}>BIGGER</span>
+             WIN BIG, BUILD <span style={{ color: '#5BE2B3' }}>BIGGER</span>
           </h2>
         </ScrollReveal>
 
@@ -26,7 +26,7 @@ export default function Prizes() {
                    <p style={{ fontSize: '0.8rem', opacity: 0.6, letterSpacing: '0.1em', marginBottom: 20 }}>{p.label}</p>
                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 6 }}>
                       <span style={{ fontSize: '1.4rem' }}>🔒</span>
-                      <p style={{ fontSize: '1.4rem', fontWeight: 800, color: '#c29b40', letterSpacing: '0.04em' }}>
+                      <p style={{ fontSize: '1.4rem', fontWeight: 800, color: '#5BE2B3', letterSpacing: '0.04em' }}>
                         Revealing Soon
                       </p>
                    </div>
