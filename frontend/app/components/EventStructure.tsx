@@ -39,7 +39,7 @@ export default function EventStructure() {
   const allRounds = timelineData.flatMap(p => p.rounds);
 
   return (
-    <section style={{ background: '#0F1A18', padding: '120px 24px', position: 'relative', overflow: 'hidden' }}>
+    <section style={{ background: '#0F1A18', padding: '120px 24px', position: 'relative', overflow: 'hidden' }} id='event'>
       
       {/* Desktop Version */}
       <div className="desktop-timeline" style={{ 
