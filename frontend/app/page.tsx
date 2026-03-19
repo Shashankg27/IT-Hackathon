@@ -8,6 +8,7 @@ import Prizes from "./components/Prizes";
 import PastEvents from "./components/PastEvents";
 import WhySponsor from "./components/WhySponsor";
 import SponsorTiers from "./components/SponsorTiers";
+import Sponsors from "./components/Sponsors";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -34,6 +35,7 @@ export default function Home() {
       </div>
       <WhySponsor />
       <SponsorTiers />
+      <Sponsors />
       <Contact />
       <Footer />
     </main>
