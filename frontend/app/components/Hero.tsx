@@ -127,8 +127,20 @@ const IDEATHON_DATE = new Date('2026-04-11T09:00:00+05:30');
 const HACKATHON_DATE = new Date('2026-04-18T09:00:00+05:30');
 
 export default function Hero() {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://apply.devfolio.co/v2/sdk.js';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <section
+      id="hero"
       className="hero-section"
       style={{
         minHeight: '100vh',
@@ -179,21 +191,12 @@ export default function Hero() {
           </div>
 
           <div className="hero-cta" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-            <a
-              href="#contact"
-              style={{
-                background: '#5BE2B3',
-                color: '#0F1A18',
-                padding: '12px 28px',
-                fontSize: '0.8rem',
-                fontWeight: 800,
-                borderRadius: '4px',
-                letterSpacing: '0.1em',
-              }}
-              className="hover:bg-[#34d399] transition-colors"
-            >
-              REGISTER NOW
-            </a>
+            <div
+              className="apply-button"
+              data-hackathon-slug="hackitbvp-2"
+              data-button-theme="light"
+              style={{ height: '44px', width: '312px' }}
+            ></div>
 
             <a
               href="#event"

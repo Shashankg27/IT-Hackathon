@@ -78,7 +78,7 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a href="#contact" className="register-btn">
+            <a href="#hero" className="register-btn">
               REGISTER
             </a>
           </div>
@@ -94,7 +94,7 @@ export default function Navbar() {
         ))}
 
         <a
-          href="#contact"
+          href="#hero"
           className="mobile-register-btn"
           onClick={() => setMenuOpen(false)}
         >
