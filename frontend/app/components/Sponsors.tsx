@@ -51,7 +51,7 @@ export default function Sponsors() {
               >
                 <div style={{
                   backgroundColor: '#121F1C',
-                  padding: '14px',
+                  padding: '25px',
                   borderRadius: '12px',
                   border: '1px solid #2C3E3A',
                   width: '100%',
@@ -71,8 +71,7 @@ export default function Sponsors() {
                       src={sponsor.logo} 
                       alt="DEVFOLIO LOGO" 
                       fill
-                      style={{ objectFit: 'contain', filter: 'grayscale(1) brightness(1.2)', transition: 'filter 0.3s ease' }}
-                      className="group-hover:filter-none"
+                      style={{ objectFit: 'contain' }}
                     />
                   </div>
                 </div>
