@@ -69,7 +69,7 @@ export default function Sponsors() {
                   <div style={{ position: 'relative', width: '100%', height: '100%' }}>
                     <Image 
                       src={sponsor.logo} 
-                      alt={sponsor.name} 
+                      alt="DEVFOLIO LOGO" 
                       fill
                       style={{ objectFit: 'contain', filter: 'grayscale(1) brightness(1.2)', transition: 'filter 0.3s ease' }}
                       className="group-hover:filter-none"
