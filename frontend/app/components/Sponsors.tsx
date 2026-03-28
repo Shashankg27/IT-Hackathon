@@ -7,82 +7,132 @@ const sponsors = [
     name: 'Devfolio',
     logo: '/Devfolio_Logo-White.png',
     link: 'https://devfolio.co',
-    category: 'PLATFORM PARTNER'
+  },
+  {
+    name: 'Wolfram',
+    logo: '/sponsors/Wolfram.png',
+    link: 'https://www.wolfram.com',
+    padding: '10px'
+  },
+  {
+    name: 'HoverRobotix',
+    logo: '/sponsors/HoverRobotix Logo png.png',
+    link: '#',
+  },
+  {
+    name: 'Lucr8 Ventures',
+    logo: '/sponsors/Lucr8 Ventures Logo png.jpg.jpeg',
+    link: '#',
+  },
+  {
+    name: 'MENTORx',
+    logo: '/sponsors/MENTORx Logo png.png',
+    link: '#',
+  },
+  {
+    name: 'RevUp',
+    logo: '/sponsors/RevUp Logo png (2).png',
+    link: '#',
   }
 ];
 
+function SponsorCard({ sponsor, delay }: { sponsor: typeof sponsors[0], delay: number }) {
+  return (
+    <ScrollReveal delay={delay}>
+      <a 
+        href={sponsor.link} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="group relative block"
+        style={{ textDecoration: 'none' }}
+      >
+        <div 
+          className="relative transition-all duration-500 ease-out transform group-hover:-translate-y-3"
+          style={{
+            width: '320px',
+            maxWidth: '100%',
+            height: '120px',
+            backgroundColor: 'rgba(18, 31, 28, 0.4)',
+            backdropFilter: 'blur(12px)',
+            borderRadius: '20px',
+            border: '1px solid rgba(91, 226, 179, 0.15)',
+            padding: sponsor.padding || '25px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            overflow: 'hidden',
+          }}
+        >
+          {/* Animated Glow Effect */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+            style={{
+              background: 'radial-gradient(circle at center, rgba(91, 226, 179, 0.15) 0%, transparent 70%)'
+            }}
+          />
+          
+          <div style={{ position: 'relative', width: '100%', height: '100%', zIndex: 1 }}>
+            <Image 
+              src={sponsor.logo} 
+              alt={`${sponsor.name.toUpperCase()} LOGO`} 
+              fill
+              style={{ objectFit: 'contain' }}
+              className="transition-transform duration-500 group-hover:scale-110"
+            />
+          </div>
+        </div>
+        
+        <div style={{ marginTop: '16px', textAlign: 'center' }}>
+          <h4 className="transition-colors duration-300 group-hover:text-[#5BE2B3]" 
+              style={{ color: '#f8fafc', fontSize: '1rem', fontWeight: 600 }}>
+            {sponsor.name}
+          </h4>
+        </div>
+      </a>
+    </ScrollReveal>
+  );
+}
+
 export default function Sponsors() {
   return (
-    <section id="sponsors" style={{ backgroundColor: '#0F1A18', padding: '100px 24px' }}>
-      <div className="container">
+    <section id="sponsors" className="relative" style={{ backgroundColor: '#0F1A18', padding: '120px 24px' }}>
+      {/* Background Decor */}
+      <div className="dots-grid opacity-10" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-6xl pointer-events-none">
+        <div className="absolute top-40 left-0 w-96 h-96 bg-[#5BE2B3]/[0.03] blur-[100px] rounded-full" />
+        <div className="absolute bottom-40 right-0 w-96 h-96 bg-[#5BE2B3]/[0.03] blur-[100px] rounded-full" />
+      </div>
+
+      <div className="container relative z-10">
         <ScrollReveal>
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 className="heading-lg" style={{ color: '#5BE2B3', borderBottomColor: '#5BE2B3', display: 'inline-block' }}>
-              OUR SPONSORS
+          <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+            <span style={{ 
+              color: '#5BE2B3', 
+              fontSize: '0.85rem', 
+              fontWeight: 700, 
+              letterSpacing: '0.3em', 
+              textTransform: 'uppercase',
+              display: 'block',
+              marginBottom: '12px'
+            }}>
+              Partnerships
+            </span>
+            <h2 className="heading-lg" style={{ color: '#f8fafc', margin: 0 }}>
+              POWERED BY <span style={{ color: '#5BE2B3' }}>INNOVATORS</span>
             </h2>
-            <p style={{ color: '#94a3b8', marginTop: '20px', maxWidth: '600px', marginInline: 'auto' }}>
-              We are proud to be supported by industry-leading organizations that share our vision for innovation and data accountability.
+            <p style={{ color: '#94a3b8', marginTop: '24px', maxWidth: '600px', marginInline: 'auto', fontSize: '1.1rem' }}>
+              We collaborate with visionary organizations to redefine the boundaries of what&apos;s possible.
             </p>
           </div>
         </ScrollReveal>
 
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
           gap: '40px', 
-          justifyItems: 'center', 
-          alignItems: 'center' 
+          justifyItems: 'center' 
         }}>
-          {sponsors.map((sponsor, idx) => (
-            <ScrollReveal key={sponsor.name} delay={idx * 100}>
-              <a 
-                href={sponsor.link} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group"
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: '16px',
-                  textDecoration: 'none',
-                  transition: 'transform 0.3s ease'
-                }}
-              >
-                <div style={{
-                  backgroundColor: '#121F1C',
-                  padding: '25px',
-                  borderRadius: '12px',
-                  border: '1px solid #2C3E3A',
-                  width: '100%',
-                  maxWidth: '400px',
-                  height: '100px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}
-                className="sponsor-card hover:border-[#5BE2B3] hover:shadow-[0_0_30px_rgba(91,226,179,0.1)]"
-                >
-                  <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-                    <Image 
-                      src={sponsor.logo} 
-                      alt="DEVFOLIO LOGO" 
-                      fill
-                      style={{ objectFit: 'contain' }}
-                    />
-                  </div>
-                </div>
-                <div style={{ textAlign: 'center' }}>
-                  <p style={{ color: '#5BE2B3', fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '4px' }}>
-                    {sponsor.category}
-                  </p>
-                  <h4 style={{ color: '#f8fafc', fontSize: '1rem', fontWeight: 700 }}>{sponsor.name}</h4>
-                </div>
-              </a>
-            </ScrollReveal>
+          {sponsors.map((s, i) => (
+            <SponsorCard key={s.name} sponsor={s} delay={i * 100} />
           ))}
         </div>
       </div>
