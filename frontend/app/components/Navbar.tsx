@@ -78,7 +78,7 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a href="#hero" className="register-btn">
+            <a href="https://hackitbvp-2.devfolio.co/overview" target="_blank" rel="noopener noreferrer" className="register-btn">
               APPLY NOW
             </a>
           </div>
@@ -94,7 +94,9 @@ export default function Navbar() {
         ))}
 
         <a
-          href="#hero"
+          href="https://hackitbvp-2.devfolio.co/overview"
+          target="_blank"
+          rel="noopener noreferrer"
           className="mobile-register-btn"
           onClick={() => setMenuOpen(false)}
         >

@@ -4,17 +4,6 @@ import ScrollReveal from './ScrollReveal';
 
 const sponsors = [
   {
-    name: 'Devfolio',
-    logo: '/Devfolio_Logo-White.png',
-    link: 'https://devfolio.co',
-  },
-  {
-    name: 'Wolfram',
-    logo: '/sponsors/Wolfram.png',
-    link: 'https://www.wolfram.com',
-    padding: '10px'
-  },
-  {
     name: 'HoverRobotix',
     logo: '/sponsors/HoverRobotix Logo png.png',
     link: '#',
@@ -33,6 +22,17 @@ const sponsors = [
     name: 'RevUp',
     logo: '/sponsors/RevUp Logo png (2).png',
     link: '#',
+  },
+  {
+    name: 'Devfolio',
+    logo: '/Devfolio_Logo-White.png',
+    link: 'https://devfolio.co',
+  },
+  {
+    name: 'Wolfram',
+    logo: '/sponsors/Wolfram.png',
+    link: 'https://www.wolfram.com',
+    padding: '10px'
   }
 ];
 
