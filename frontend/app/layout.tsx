@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     "Data Privacy Hackathon India",
   ],
   authors: [{ name: "IT Department, BVCOE" }],
+  icons: {
+    icon: "/logo.png",
+  },
   openGraph: {
     title: "Hack.IT@BVP 3.0 | Ideathon & Hackathon – 11 & 18 April 2026",
     description:

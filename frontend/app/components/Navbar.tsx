@@ -51,11 +51,10 @@ export default function Navbar() {
         <div className="nav-inner">
           <div className="logo">
             <Image
-              src="/collegeLogo.png"
-              alt="BVCOE Logo"
-              width={44}
-              height={44}
-              style={{ filter: 'brightness(0) invert(1)' }}
+              src="/logo.png"
+              alt="Hack.IT@BVP Logo"
+              width={48}
+              height={48}
             />
             <div>
               <div className="logo-top">IT DEPT · BVCOE</div>
