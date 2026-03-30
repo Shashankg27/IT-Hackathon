@@ -50,7 +50,7 @@ body {
   background-color: var(--bg-primary);
   padding: 100px 24px;
   position: relative;
-  overflow: hidden;
+  overflow: clip;
 }
 
 .section-navy {
@@ -58,7 +58,7 @@ body {
   color: white;
   padding: 100px 24px;
   position: relative;
-  overflow: hidden;
+  overflow: clip;
 }
 
 .premium-bg {
@@ -88,7 +88,7 @@ body {
   background-color: var(--bg-secondary);
   padding: 100px 24px;
   position: relative;
-  overflow: hidden;
+  overflow: clip;
 }
 
 .container {
