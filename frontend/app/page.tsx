@@ -24,7 +24,7 @@ export default function Home() {
       <Hero />
       <About />
       <AboutDepartment />
-      {/* <Tracks /> */}
+      <Tracks />
       <EventStructure />
       <Prizes />
       <PastEvents />
