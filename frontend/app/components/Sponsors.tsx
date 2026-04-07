@@ -38,6 +38,11 @@ const sponsors = [
     name: 'UniAcademy',
     logo: '/sponsors/uniacademy.jpg',
     link: 'https://uniacademy.pro',
+  },
+  {
+    name: 'Music Bazaar',
+    logo: '/sponsors/musicBazaar.jpeg',
+    link: '#',
   }
 ];
 
