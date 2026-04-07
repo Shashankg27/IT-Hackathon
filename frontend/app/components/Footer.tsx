@@ -11,7 +11,7 @@ export default function Footer() {
              <p style={{ fontSize: '1.2rem', fontWeight: 800, color: '#5BE2B3' }}>Hack.IT@BVP 3.0</p>
           </div>
           <p style={{ fontSize: '0.8rem', opacity: 0.6, maxWidth: 300 }}>
-             Organized by the IT Department, Bharati Vidyapeeth’s College of Engineering, New Delhi. 
+             Organized by the IT Department (NBA Accredited), <br /> Bharati Vidyapeeth’s College of Engineering, New Delhi. 
              Connecting law, technology, and innovation.
           </p>
         </div>

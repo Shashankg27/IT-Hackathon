@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="section-navy relative overflow-visible"
+      className="section-navy relative"
       style={{ background: '#0F1A18', padding: '120px 24px' }}
     >
       <div className="dots-grid opacity-10" />

@@ -3,24 +3,69 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 function useCountdown(targetDate: Date) {
-  const [days, setDays] = useState(0);
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    isVisible: false,
+  });
 
   useEffect(() => {
     const calc = () => {
-      const diff = targetDate.getTime() - Date.now();
+      const now = Date.now();
+      const diff = targetDate.getTime() - now;
+
       if (diff <= 0) {
-        setDays(0);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0, isVisible: false });
         return;
       }
-      setDays(Math.floor(diff / (1000 * 60 * 60 * 24)));
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      // Visible only if less than 5 days are left
+      const isVisible = diff < 5 * 24 * 60 * 60 * 1000;
+
+      setTimeLeft({ days, hours, minutes, seconds, isVisible });
     };
 
     calc();
-    const id = setInterval(calc, 1000 * 60);
+    const id = setInterval(calc, 1000);
     return () => clearInterval(id);
   }, [targetDate]);
 
-  return days;
+  return timeLeft;
+}
+
+function TimeUnit({ value, label }: { value: number; label: string }) {
+  return (
+    <div style={{ textAlign: 'center', minWidth: '40px' }}>
+      <div
+        style={{
+          fontSize: '1.4rem',
+          fontWeight: 800,
+          color: '#5BE2B3',
+          lineHeight: 1,
+        }}
+      >
+        {String(value).padStart(2, '0')}
+      </div>
+      <div
+        style={{
+          fontSize: '0.6rem',
+          fontWeight: 700,
+          color: 'rgba(91, 226, 179, 0.6)',
+          letterSpacing: '0.05em',
+          marginTop: 4,
+        }}
+      >
+        {label}
+      </div>
+    </div>
+  );
 }
 
 function CountdownTimer({
@@ -34,78 +79,132 @@ function CountdownTimer({
   dayNum: string;
   month: string;
 }) {
-  const days = useCountdown(targetDate);
+  const { days, hours, minutes, seconds, isVisible } = useCountdown(targetDate);
 
   return (
     <div className="animate-float countdown-timer" style={{ textAlign: 'center' }}>
-      
-      {/* DATE + DAYS ROW */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 14,
-        }}
-      >
-        {/* DATE */}
-        <div>
-          <div
-            style={{
-              fontSize: '2.5rem',
-              fontWeight: 800,
-              color: '#f8fafc',
-              lineHeight: 1,
-            }}
-          >
-            {dayNum}
-          </div>
-          <div
-            style={{
-              fontSize: '0.8rem',
-              fontWeight: 700,
-              color: '#5BE2B3',
-              marginTop: 2,
-            }}
-          >
-            {month}
-          </div>
-        </div>
-
-        {/* DIVIDER */}
+      {!isVisible ? (
+        /* HORIZONTAL LAYOUT - Original Style (Date | Days) */
         <div
           style={{
-            width: 1,
-            height: 46,
-            backgroundColor: '#2C3E3A',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 14,
           }}
-        />
-
-        {/* DAYS */}
-        <div>
-          <div
-            style={{
-              fontSize: '2.2rem',
-              fontWeight: 800,
-              color: '#5BE2B3',
-              lineHeight: 1,
-            }}
-          >
-            {String(days).padStart(2, '0')}
+        >
+          {/* DATE */}
+          <div style={{ textAlign: 'center' }}>
+            <div
+              style={{
+                fontSize: '2.5rem',
+                fontWeight: 800,
+                color: '#f8fafc',
+                lineHeight: 1,
+              }}
+            >
+              {dayNum}
+            </div>
+            <div
+              style={{
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                color: '#5BE2B3',
+                marginTop: 2,
+              }}
+            >
+              {month}
+            </div>
           </div>
+
+          {/* DIVIDER */}
           <div
             style={{
-              fontSize: '0.75rem',
-              fontWeight: 700,
-              color: 'rgba(91, 226, 179, 0.6)',
-              letterSpacing: '0.08em',
-              marginTop: 4,
+              width: 1,
+              height: 46,
+              backgroundColor: '#2C3E3A',
             }}
-          >
-            DAYS
+          />
+
+          {/* DAYS */}
+          <div>
+            <div
+              style={{
+                fontSize: '2.2rem',
+                fontWeight: 800,
+                color: '#5BE2B3',
+                lineHeight: 1,
+              }}
+            >
+              {String(days).padStart(2, '0')}
+            </div>
+            <div
+              style={{
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                color: 'rgba(91, 226, 179, 0.6)',
+                letterSpacing: '0.08em',
+                marginTop: 4,
+              }}
+            >
+              DAYS
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        /* VERTICAL LAYOUT - Timer Style (Date / Full Timer) */
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 12,
+          }}
+        >
+          {/* DATE */}
+          <div style={{ textAlign: 'center' }}>
+            <div
+              style={{
+                fontSize: '2rem',
+                fontWeight: 800,
+                color: '#f8fafc',
+                lineHeight: 1,
+                transition: 'all 0.3s ease',
+              }}
+            >
+              {dayNum}
+            </div>
+            <div
+              style={{
+                fontSize: '0.7rem',
+                fontWeight: 700,
+                color: '#5BE2B3',
+                marginTop: 2,
+                transition: 'all 0.3s ease',
+              }}
+            >
+              {month}
+            </div>
+          </div>
+
+          {/* TIMER GRID */}
+          <div
+            style={{
+              display: 'flex',
+              gap: 8,
+              padding: '8px 12px',
+              backgroundColor: 'rgba(91, 226, 179, 0.05)',
+              borderRadius: '8px',
+              border: '1px solid rgba(91, 226, 179, 0.1)',
+            }}
+          >
+            <TimeUnit value={days} label="DD" />
+            <TimeUnit value={hours} label="HH" />
+            <TimeUnit value={minutes} label="MM" />
+            <TimeUnit value={seconds} label="SS" />
+          </div>
+        </div>
+      )}
 
       {/* LABEL */}
       <p
@@ -113,7 +212,7 @@ function CountdownTimer({
           fontSize: '0.65rem',
           fontWeight: 600,
           color: '#94a3b8',
-          marginTop: 10,
+          marginTop: isVisible ? 6 : 10,
           letterSpacing: '0.12em',
         }}
       >

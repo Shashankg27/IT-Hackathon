@@ -130,13 +130,13 @@ export default function Tracks() {
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/10 blur-[150px] rounded-full animate-pulse pointer-events-none" style={{ animationDelay: '2s' }} />
 
       <div className="container relative z-10 !px-6">
-        <ScrollReveal>
-          <div className="!mb-24 text-center">
+        <ScrollReveal className="w-full">
+          <div className="!mb-24 flex flex-col items-center text-center">
             <div className="inline-block !py-2 !px-6 rounded-full border border-emerald-500/30 bg-emerald-500/5 !mb-8">
                <span className="text-emerald-400 font-bold tracking-[0.3em] text-[10px] uppercase block">Innovation Ecosystem</span>
             </div>
             <h2 className="heading-lg !mb-10 text-white !after:left-1/2 !after:-translate-x-1/2">Tracks & Challenges</h2>
-            <p className="text-slate-400 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed font-light">
+            <p className="text-slate-400 max-w-4xl mx-auto text-lg md:text-xl leading-relaxed font-light text-center">
               Bridge the gap between legal frameworks and technological innovation. <br className="hidden md:block" /> Select a domain and build the future of privacy and security.
             </p>
           </div>

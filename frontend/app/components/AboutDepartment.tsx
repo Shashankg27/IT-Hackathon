@@ -22,7 +22,7 @@ const deptMissions = [
 
 export default function AboutDepartment() {
   return (
-    <section id="about-department" className="section-navy relative overflow-visible" style={{ background: '#0F1A18', padding: '120px 24px' }}>
+    <section id="about-department" className="section-navy relative" style={{ background: '#0F1A18', padding: '120px 24px' }}>
       <div className="dots-grid opacity-10" />
       <div className="bg-text-large" style={{ bottom: '10%', right: '-5%', opacity: 0.03, color: '#f8fafc' }}>DEPT</div>
       
@@ -65,7 +65,8 @@ export default function AboutDepartment() {
                 marginBottom: '32px',
                 lineHeight: 1.4
               }}>
-                Department of Information Technology
+                Department of Information Technology <br />
+                <span style={{ fontSize: '1rem', color: '#5BE2B3', opacity: 0.8 }}>(NBA Accredited)</span>
               </h3>
             </ScrollReveal>
 
@@ -79,9 +80,10 @@ export default function AboutDepartment() {
               }}>
                 {[
                   { stat: '1999', label: 'Established' },
-                  { stat: '120+', label: 'Intake' },
                   { stat: '25+', label: 'Years' },
+                  { stat: 'NBA', label: 'Accredited' },
                   { stat: 'AICTE', label: 'Approved' },
+                  { stat: '120+', label: 'Intake' },
                 ].map((item, i) => (
                   <div key={i} style={{
                     padding: '20px',
@@ -109,7 +111,7 @@ export default function AboutDepartment() {
                   textAlign: 'justify',
                   marginBottom: '24px'
                 }}>
-                  The Department of Information Technology was formed in 1999 and has since grown to become a cornerstone of technical education at BVCOE. With an increased intake of 120 students, we focus on all-round development and technical excellence.
+                  The Department of Information Technology was formed in 1999 and has since grown to become a cornerstone of technical education at BVCOE. Our department is **NBA Accredited**, highlighting our commitment to quality technical education. With an intake of 120 students, we focus on all-round development and academic excellence.
                 </p>
                 <p style={{
                   color: '#94a3b8',

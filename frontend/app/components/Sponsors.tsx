@@ -33,6 +33,11 @@ const sponsors = [
     logo: '/sponsors/Wolfram.png',
     link: 'https://www.wolfram.com',
     padding: '10px'
+  },
+  {
+    name: 'UniAcademy',
+    logo: '/sponsors/uniacademy.jpg',
+    link: 'https://uniacademy.pro',
   }
 ];
 
