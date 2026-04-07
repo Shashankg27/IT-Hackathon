@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const navLinks = [
-  { label: 'ABOUT', href: '#about' },
-  { label: 'TRACKS', href: '#tracks' },
-  { label: 'TIMELINE', href: '#event' },
-  { label: 'PRIZES', href: '#prizes' },
-  { label: 'PAST EVENTS', href: '#past-events' },
-  { label: 'SPONSORS', href: '#sponsor-tiers' },
+  { label: 'ABOUT', href: '/#about' },
+  { label: 'TRACKS', href: '/#tracks' },
+  { label: 'TIMELINE', href: '/#event' },
+  { label: 'PRIZES', href: '/#prizes' },
+  { label: 'PAST EVENTS', href: '/#past-events' },
+  { label: 'TEAM', href: '/team' },
+  { label: 'SPONSORS', href: '/#sponsor-tiers' },
 ];
 
 export default function Navbar() {
@@ -50,7 +51,7 @@ export default function Navbar() {
         }}
       >
         <div className="nav-inner">
-          <div className="logo">
+          <a href="/" className="logo" style={{ textDecoration: 'none' }}>
             <Image
               src="/logo.png"
               alt="Hack.IT@BVP Logo"
@@ -61,7 +62,7 @@ export default function Navbar() {
               <div className="logo-top">IT DEPT · BVCOE</div>
               <div className="logo-bottom">Hack.IT@BVP 3.0</div>
             </div>
-          </div>
+          </a>
 
           <button
             className={`mobile-menu-button ${menuOpen ? 'open' : ''}`}

@@ -371,7 +371,7 @@ export default function Hero() {
 
             <div style={{ width: 1, height: 120, backgroundColor: '#2C3E3A', marginTop: 8 }} />
 
-            <CountdownTimer targetDate={HACKATHON_DATE} label="HACKATHON" dayNum="18" month="APRIL" />
+            <CountdownTimer targetDate={HACKATHON_DATE} label="HACKATHON" dayNum="17-18" month="APRIL" />
           </div>
         </div>
       </div>
