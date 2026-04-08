@@ -94,6 +94,15 @@ const tracks: Track[] = [
     gradient: 'from-indigo-500/20 to-violet-500/20',
     glow: 'shadow-indigo-500/20',
   },
+  {
+    icon: '✨',
+    title: 'Miscellaneous',
+    desc: 'All ideas are welcome. You may bring any project that aligns with the theme.',
+    problemStatement: 'Innovation often transcends category boundaries, and some of the most impactful solutions arise from unexpected cross-disciplinary and "out-of-the-box" thinking.',
+    challenge: 'Bring any project that aligns with the hackathon theme. We welcome all innovative ideas that push the boundaries of technology and creativity beyond our specific tracks.',
+    gradient: 'from-fuchsia-500/20 to-pink-500/20',
+    glow: 'shadow-fuchsia-500/20',
+  },
 ];
 
 export default function Tracks() {
