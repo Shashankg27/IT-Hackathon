@@ -51,7 +51,7 @@ export default function WhySponsor() {
                       <p style={{ fontSize: '0.7rem', color: '#94a3b8' }}>TEAMS</p>
                     </div>
                     <div>
-                      <p style={{ fontSize: '1.5rem', fontWeight: 800, color: '#5BE2B3' }}>9L+</p>
+                      <p style={{ fontSize: '1.5rem', fontWeight: 800, color: '#5BE2B3' }}>10.5L+</p>
                       <p style={{ fontSize: '0.7rem', color: '#94a3b8' }}>PRIZE POOL</p>
                     </div>
                  </div>
