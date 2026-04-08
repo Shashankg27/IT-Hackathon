@@ -2,7 +2,7 @@
 import ScrollReveal from './ScrollReveal';
 
 const prizeSummary = [
-  { label: 'TOTAL PRIZE POOL', value: '₹ 10,50,000+' },
+  { label: 'TOTAL PRIZE POOL', value: '₹ 10.5L+' },
 ];
 
 export default function Prizes() {

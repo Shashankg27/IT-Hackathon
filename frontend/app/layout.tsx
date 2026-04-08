@@ -11,7 +11,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Hack.IT@BVP 3.0 | Ideathon & Hackathon | BVCOE Delhi",
   description:
-    "Hack.IT@BVP 3.0 — A two-phase Ideathon & Hackathon on Digital Trust & Data Accountability powered by the DPDP Act, 2023. Organized by IT Dept, Bharati Vidyapeeth's College of Engineering, New Delhi. 11 April & 18 April 2026. Prize pool ₹1,15,000+.",
+    "Hack.IT@BVP 3.0 — A two-phase Ideathon & Hackathon on Digital Trust & Data Accountability powered by the DPDP Act, 2023. Organized by IT Dept, Bharati Vidyapeeth's College of Engineering, New Delhi. 11 April & 18 April 2026. Prize pool ₹10.5 Lakh+.",
   keywords: [
     "Hack.IT BVP",
     "Hackathon Delhi 2026",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hack.IT@BVP 3.0 | Ideathon & Hackathon – 11 & 18 April 2026",
     description:
-      "Compete for ₹1,15,000+ in prizes. Join an innovation event on Digital Trust & Data Accountability. Organized by BVCOE Delhi IT Department.",
+      "Compete for ₹10.5 Lakh+ in prizes. Join an innovation event on Digital Trust & Data Accountability. Organized by BVCOE Delhi IT Department.",
     type: "website",
   },
 };
