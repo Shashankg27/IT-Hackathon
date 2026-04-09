@@ -43,10 +43,16 @@ const sponsors = [
     name: 'Music Bazaar',
     logo: '/sponsors/musicBazaar.jpeg',
     link: '#',
+  },
+  {
+    name: 'Math Masters of Rohini & Pitampura',
+    logo: '/sponsors/math-masters-of-rohini-&-pitampura.png',
+    link: '#',
+    logoBackground: true,
   }
 ];
 
-function SponsorCard({ sponsor, delay }: { sponsor: typeof sponsors[0], delay: number }) {
+function SponsorCard({ sponsor, delay }: { sponsor: any, delay: number }) {
   return (
     <ScrollReveal delay={delay}>
       <a 
@@ -80,7 +86,15 @@ function SponsorCard({ sponsor, delay }: { sponsor: typeof sponsors[0], delay: n
             }}
           />
           
-          <div style={{ position: 'relative', width: '100%', height: '100%', zIndex: 1 }}>
+          <div style={{ 
+            position: 'relative', 
+            width: '100%', 
+            height: '100%', 
+            zIndex: 1,
+            backgroundColor: sponsor.logoBackground ? '#ffffff' : 'transparent',
+            borderRadius: sponsor.logoBackground ? '10px' : '0',
+            padding: sponsor.logoBackground ? '12px' : '0'
+          }}>
             <Image 
               src={sponsor.logo} 
               alt={`${sponsor.name.toUpperCase()} LOGO`} 
