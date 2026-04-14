@@ -223,7 +223,7 @@ function CountdownTimer({
 }
 
 const IDEATHON_DATE = new Date('2026-04-11T09:00:00+05:30');
-const HACKATHON_DATE = new Date('2026-04-18T09:00:00+05:30');
+const HACKATHON_DATE = new Date('2026-04-16T09:00:00+05:30');
 
 export default function Hero() {
 
@@ -371,7 +371,7 @@ export default function Hero() {
 
             <div style={{ width: 1, height: 120, backgroundColor: '#2C3E3A', marginTop: 8 }} />
 
-            <CountdownTimer targetDate={HACKATHON_DATE} label="HACKATHON" dayNum="17-18" month="APRIL" />
+            <CountdownTimer targetDate={HACKATHON_DATE} label="HACKATHON" dayNum="16-18" month="APRIL" />
           </div>
         </div>
       </div>

@@ -49,6 +49,11 @@ const sponsors = [
     logo: '/sponsors/math-masters-of-rohini-&-pitampura.png',
     link: '#',
     logoBackground: true,
+  },
+  {
+    name: 'Smaaash',
+    logo: '/sponsors/smaash-logo.webp',
+    link: '#',
   }
 ];
 
