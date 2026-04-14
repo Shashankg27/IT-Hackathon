@@ -2,7 +2,27 @@
 import ScrollReveal from './ScrollReveal';
 import { useState, useEffect } from 'react';
 
-const timelineData = [
+interface TimelineRound {
+  num: string;
+  title: string;
+  desc: string;
+  y: number;
+  icon: string;
+  roadPeak: string;
+  showPin: boolean;
+  date?: string;
+  subtitle?: string;
+  venue?: string;
+}
+
+interface TimelinePhase {
+  phase: string;
+  title: string;
+  y: number;
+  rounds: TimelineRound[];
+}
+
+const timelineData: TimelinePhase[] = [
   {
     phase: 'Phase I',
     title: 'IDEATHON',
@@ -17,9 +37,14 @@ const timelineData = [
     title: 'HACKATHON',
     y: 650,
     rounds: [
-      { num: 'ROUND 1', title: 'Presentation Round', desc: 'Virtual technical solution walkthrough.', y: 800, icon: '📝', roadPeak: 'left', showPin: false },
-      { num: 'ROUND 2', title: 'Mentoring Round', desc: 'Shortlisted teams build and refine working prototypes.', y: 1160, icon: '🚀', roadPeak: 'right', showPin: false },
-      { num: 'GRAND FINALE', title: 'OFFLINE', date: '18 APRIL 2026', subtitle: 'Presentation Round', desc: 'Finalist teams present prototypes before an expert jury panel.', y: 1500, icon: '🔬', roadPeak: 'left', showPin: true, venue: 'BVCOE Campus' }
+      { num: 'ROUND 1', title: 'Mentoring Round 1', date: '16 APRIL 2026', subtitle: '12:00 PM (ONLINE)', desc: 'Initial mentoring session to refine ideas.', y: 775, icon: '🧠', roadPeak: 'left', showPin: false },
+      { num: 'ROUND 2', title: 'Judgement Round 1', date: '16 APRIL 2026', subtitle: '02:00 PM (ONLINE)', desc: 'First round of evaluation.', y: 1055, icon: '⚖️', roadPeak: 'right', showPin: false },
+      { num: 'ROUND 3', title: 'Result 1', date: '16 APRIL 2026', subtitle: '05:00 PM (ONLINE)', desc: 'Announcement of results for Round 1.', y: 1335, icon: '📢', roadPeak: 'left', showPin: false },
+      { num: 'ROUND 4', title: 'Mentoring Round 2', date: '16 APRIL 2026', subtitle: '08:00 PM (ONLINE)', desc: 'Second mentoring session.', y: 1615, icon: '🚀', roadPeak: 'right', showPin: false },
+      { num: 'ROUND 5', title: 'Judgement Round 2', date: '16 APRIL 2026', subtitle: '10:00 PM (ONLINE)', desc: 'Second round of evaluation.', y: 1895, icon: '🔍', roadPeak: 'left', showPin: false },
+      { num: 'ROUND 6', title: 'Result 2', date: '17 APRIL 2026', subtitle: '12:30 AM (ONLINE)', desc: 'Announcement of results for Round 2.', y: 2160, icon: '🏆', roadPeak: 'right', showPin: false },
+      { num: 'ROUND 7', title: 'Mentoring Round 3', date: '17 APRIL 2026', subtitle: '01:00 PM (ONLINE)', desc: 'Final mentoring before the grand finale.', y: 2430, icon: '💡', roadPeak: 'left', showPin: false },
+      { num: 'GRAND FINALE', title: 'OFFLINE', date: '18 APRIL 2026', subtitle: '09:00 AM', desc: 'Finalist teams present prototypes before an expert jury panel.', y: 2700, icon: '🔬', roadPeak: 'right', showPin: true, venue: 'BVCOE Campus' }
     ]
   }
 ];
@@ -66,7 +91,7 @@ export default function EventStructure() {
         position: 'relative', 
         maxWidth: '1200px', 
         margin: '0 auto', 
-        minHeight: '1800px',
+        minHeight: '3000px',
         paddingBottom: '100px'
       }}>
         <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
@@ -92,7 +117,7 @@ export default function EventStructure() {
 
             {/* ROAD */}
             <svg
-              viewBox="0 0 800 1800"
+              viewBox="0 0 800 2900"
               preserveAspectRatio="xMidYMin slice"
               style={{
                 position: 'absolute',
@@ -100,18 +125,24 @@ export default function EventStructure() {
                 left: '50%',
                 transform: 'translateX(-50%) scaleX(-1)',
                 width: '100%',
-                height: '1800px',
+                height: '2900px',
                 zIndex: 1,
                 pointerEvents: 'none'
               }}
             >
               <path
                 d="M 400 0 C 580 80, 580 280, 400 360 
-                   C 220 440, 220 560, 400 640 
-                   C 580 720, 580 880, 400 960 
-                   C 220 1040, 220 1160, 400 1240 
-                   C 580 1320, 580 1440, 400 1520
-                   C 220 1600, 220 1720, 400 1800"
+   C 220 440, 220 560, 400 640 
+   C 550 700, 550 820, 400 880 
+   C 250 940, 250 1060, 400 1120 
+   C 550 1180, 550 1300, 400 1360 
+   C 250 1420, 250 1540, 400 1600 
+   C 550 1660, 550 1780, 400 1840 
+   C 250 1900, 250 2020, 400 2080 
+   C 550 2140, 550 2260, 400 2320 
+   C 250 2380, 250 2500, 400 2560
+   C 550 2600, 550 2640, 400 2680
+   C 250 2720, 250 2840, 400 2900"
                 fill="none"
                 stroke="#545959"
                 strokeWidth="60"
@@ -119,11 +150,17 @@ export default function EventStructure() {
               />
               <path
                 d="M 400 0 C 580 80, 580 280, 400 360 
-                   C 220 440, 220 560, 400 640 
-                   C 580 720, 580 880, 400 960 
-                   C 220 1040, 220 1160, 400 1240 
-                   C 580 1320, 580 1440, 400 1520
-                   C 220 1600, 220 1720, 400 1800"
+   C 220 440, 220 560, 400 640 
+   C 550 700, 550 820, 400 880 
+   C 250 940, 250 1060, 400 1120 
+   C 550 1180, 550 1300, 400 1360 
+   C 250 1420, 250 1540, 400 1600 
+   C 550 1660, 550 1780, 400 1840 
+   C 250 1900, 250 2020, 400 2080 
+   C 550 2140, 550 2260, 400 2320 
+   C 250 2380, 250 2500, 400 2560
+   C 550 2600, 550 2640, 400 2680
+   C 250 2720, 250 2840, 400 2900"
                 fill="none"
                 stroke="rgba(255,255,255,0.6)"
                 strokeWidth="2"
